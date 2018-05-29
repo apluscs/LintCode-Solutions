@@ -1,0 +1,12 @@
+public class Solution {
+    /**
+     * @param character: a character
+     * @return: a character
+     */
+    public char lowercaseToUppercase(char character) {
+        return Character.toUpperCase(character);
+    }
+}
+
+100%  test cases passed
+Total runtime: 3936ms
