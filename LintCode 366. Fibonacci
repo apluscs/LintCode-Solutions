@@ -18,3 +18,22 @@ public class Solution {
 
 Time Limit Exceeded
 90% test cases passed
+
+
+public class Solution {
+    /**
+     * @param n: an integer
+     * @return: an ineger f(n)
+     */
+    public int fibonacci(int n) {
+        ArrayList<Integer> arr = new ArrayList<>();
+        arr.add(0); arr.add(1);
+        for(int i=2; i<n; i++){
+            arr.add(arr.get(i-1)+arr.get(i-2));
+        }
+        return arr.get(n-1);
+    }
+}
+
+100% test cases passedTotal runtime 1522 ms
+Your submission beats 71.00% Submissions!
