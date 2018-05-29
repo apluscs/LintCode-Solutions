@@ -7,7 +7,7 @@ public class Solution {
         int result = 0;
         int temp = number;
         int max = 0;
-        while(temp>0){
+        while(temp>0){          //the while loop takes less runtime than the for loop
             temp/= 10;
             max++;
         }
