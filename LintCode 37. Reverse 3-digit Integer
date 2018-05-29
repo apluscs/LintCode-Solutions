@@ -1,0 +1,15 @@
+public class Solution {
+    /**
+     * @param number: A 3-digit number.
+     * @return: Reversed number.
+     */
+    public int reverseInteger(int number) {
+        int result = 0;
+        for(int i = 0; number > 0; i++){
+            result += (number%10)*Math.pow(10,i);
+            number /= 10;
+        }
+        return result;
+    }
+}
+
