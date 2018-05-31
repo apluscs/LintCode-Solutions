@@ -1,0 +1,26 @@
+public class Rectangle {
+    /*
+     * Define two public attributes width and height of type int.
+     */
+    public int width; 
+    public int height;
+
+    /*
+     * Define a constructor which expects two parameters width and height here.
+     */
+    public Rectangle(int a, int b){
+        width = a;
+        height = b;
+    }
+    
+    /*
+     * Define a public method `getArea` which can calculate the area of the
+     * rectangle and return.
+     */
+    public int getArea(){
+        return width*height;
+    }
+}
+
+100% test cases passedTotal runtime 762 ms
+Your submission beats 68.00% Submissions!
