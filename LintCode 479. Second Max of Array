@@ -1,0 +1,30 @@
+public class Solution {
+    /**
+     * @param nums: An integer array
+     * @return: The second max number in the array.
+     */
+    public int secondMax(int[] nums) {
+        if(nums.length==1){
+            return nums[0];
+        }
+        int max = 0; int smax = 0;
+        if(nums[0] < nums[1]){
+            max = nums[1];
+            smax = nums[0];
+        }
+        else{
+            max = nums[0];
+            smax = nums[1];
+        }
+        if(nums.length == 2){
+            return smax;
+        }
+        for(int i = 2; i<nums.length; i++){
+            if(nums[i]>=max){
+                smax = max;
+                max = nums[i];
+            }
+        }
+        return smax;
+    }
+}
