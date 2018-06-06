@@ -1,0 +1,28 @@
+public class Solution {
+    /**
+     * @param n: a decimal number
+     * @param k: a Integer represent base-k
+     * @return: a base-k number
+     */
+    public String hexConversion(int n, int k) {
+        if(k==0 || n==0){return "0";}
+        int i = 0;
+        int num = n;
+    	while(n/(Math.pow(k,i))>=1){
+    		i++;
+        }
+    	int max = i-1;
+    	String result = "";
+        for(int j = max; j>-1; j--){
+        	int add = (int)(num/Math.pow(k, j));
+        	if(add<10){
+        		result += add + "";
+        	}
+        	else{
+        		result += (char)(add+55);
+        	}
+        	num -= Math.pow(k, j)*add;
+        }
+        return result;
+    }
+}
