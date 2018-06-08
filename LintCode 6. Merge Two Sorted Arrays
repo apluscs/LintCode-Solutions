@@ -1,0 +1,25 @@
+public class Solution {
+    /**
+     * @param A: sorted integer array A
+     * @param B: sorted integer array B
+     * @return: A new sorted integer array
+     */
+    public int[] mergeSortedArray(int[] A, int[] B) {
+        int[] result = new int[A.length + B.length];
+        int count = 0;
+        int a = 0;
+        int b = 0;
+        while(count<result.length){
+            if(b<B.length && (a==A.length || B[b]<=A[a])){
+                result[count] = B[b];
+                b++;
+            }
+            else if(a<A.length && (b==B.length || A[a]<=B[b])){
+            	result[count] = A[a];
+                a++;
+            }
+            count++;
+        }
+        return result;
+    }
+}
