@@ -1,0 +1,26 @@
+public class Solution {
+    /**
+     * @param str: An array of char
+     * @param offset: An integer
+     * @return: nothing
+     */
+    public void rotateString(char[] str, int offset) {
+        char[] result = new char[str.length];
+        int shift = 0;
+        if(str.length>0) {
+            shift = offset%str.length;
+            int count = 0;
+        for(int i = str.length - shift; i<str.length; i++){
+            result[count] = str[i];
+            count++;
+        }
+        for(int i = 0; i<str.length-shift; i++){
+            result[count] = str[i];
+            count++;
+        }
+        for(int i = 0; i<str.length; i++){
+            str[i] = result[i];
+        }
+        }
+    }
+}
