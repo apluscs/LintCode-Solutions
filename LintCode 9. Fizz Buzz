@@ -1,0 +1,26 @@
+public class Solution {
+    /**
+     * @param n: An integer
+     * @return: A list of strings.
+     */
+    public List<String> fizzBuzz(int n) {
+        ArrayList<String> result = new ArrayList<>();
+        for(int i = 1; i <= n; i++){
+            String added = "";
+            if(i%3 == 0){
+                added += "fizz";
+            }
+            if(i%5 == 0){
+                added += "buzz";
+                if(added.equals("fizzbuzz")){
+                    added = "fizz buzz";
+                }
+            }
+            else if(added.equals("")){
+                added += i;
+            }
+            result.add(added);
+        }
+        return result;
+    }
+}
