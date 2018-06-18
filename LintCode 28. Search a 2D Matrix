@@ -1,0 +1,43 @@
+public class Solution {
+    /**
+     * @param matrix: matrix, a list of lists of integers
+     * @param target: An integer
+     * @return: a boolean, indicate whether matrix contains target
+     */
+    public boolean searchMatrix(int[][] matrix, int target) {
+        if(matrix.length == 0){
+            return false;
+        }
+        int midR = matrix.length/2;   int lowR = 0;   int highR = matrix.length-1;
+        int midC = matrix[0].length/2;    int lowC = 0;   int highC = matrix[0].length-1;
+        if(matrix[0][0]>target || matrix[highR][highC]<target){
+            return false;
+        }
+        while(lowR <= highR){
+            midR = (lowR + highR)/2;
+            if(midR==matrix.length-1 || matrix[midR][0]<=target && matrix[midR+1][0]>target){
+                System.out.println(midR);
+                break;
+            }
+            else if(matrix[midR][0]>target){
+                highR = midR-1;
+            }
+            else if(matrix[midR][0]<target){
+                lowR = midR+1;
+            }
+        }
+        while(lowC <= highC){
+            midC = (highC + lowC)/2;
+            if(matrix[midR][midC]==target){
+                return true;
+            }
+            else if(matrix[midR][midC]<target){
+                lowC = midC + 1; 
+            }
+            else if(matrix[midR][midC]>target){
+                highC = midC - 1;
+            }
+        }
+        return false;
+    }
+}
