@@ -41,3 +41,32 @@ public class Solution {
         return false;
     }
 }
+
+
+public class Solution {
+    /**
+     * @param matrix: matrix, a list of lists of integers
+     * @param target: An integer
+     * @return: a boolean, indicate whether matrix contains target
+     */
+    public boolean searchMatrix(int[][] matrix, int target) {
+        if(matrix.length == 0 || matrix[0][0] > target || matrix[matrix.length-1][matrix[0].length-1]<target){
+            return false;
+        }
+        final int rLen = matrix.length; final int cLen = matrix[0].length;
+        int low = 0;    int high = rLen * cLen;
+        while(low <= high){
+            int mid = (low + high)/2;
+            if(matrix[mid/cLen][mid%cLen]==target){
+                return true;
+            }
+            else if(matrix[mid/cLen][mid%cLen]<target){
+                low = mid+1;
+            }
+            else if(matrix[mid/cLen][mid%cLen]>target){
+                high = mid-1;
+            }
+        }
+        return false;
+    }
+}
