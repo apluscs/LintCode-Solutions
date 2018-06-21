@@ -1,0 +1,32 @@
+/**
+ * Definition for ListNode
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+
+public class Solution {
+    /**
+     * @param head: n
+     * @return: The new head of reversed linked list.
+     */
+    public ListNode reverse(ListNode head) {
+        ArrayList<Integer> store = new ArrayList<>();
+        ListNode mark = head;
+        while(mark != null){
+            store.add(mark.val);
+            mark = mark.next;
+        }
+        mark = head;
+        for(int i = store.size()-1; i>-1; i--){
+            mark.val = store.get(i);
+            mark = mark.next;
+        }
+        return head;
+    }
+}
