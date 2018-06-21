@@ -1,0 +1,22 @@
+public class Solution {
+    /**
+     * @param moves: a sequence of its moves
+     * @return: if this robot makes a circle
+     */
+    public boolean judgeCircle(String moves) {
+        int vert = 0; int horz = 0;
+        String word = moves;
+        while(word.length()>0){
+            String temp = word.substring(0,1);
+            if(temp.equals("R")){horz++;}
+            else if(temp.equals("L")){horz--;}
+            else if(temp.equals("U")){vert++;}
+            else{vert--;}
+            word = word.substring(1,word.length());
+        }
+        if(vert==0 && horz==0){
+            return true;
+        }
+        return false;
+    }
+}
