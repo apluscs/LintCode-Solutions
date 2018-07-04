@@ -1,0 +1,25 @@
+public class Solution {
+    /**
+     * @param nums: An integer array
+     * @return: nothing
+     */
+    public void recoverRotatedSortedArray(List<Integer> nums) {
+        int start = 0;
+        int[] holder = new int[nums.size()];
+        for(int i = 0; i<nums.size()-1; i++){
+            if(nums.get(i+1)<nums.get(i)){
+                start = i+1;
+            }
+        }
+        System.out.println(start);
+        for(int j = start; j<nums.size(); j++){
+            holder[j-start] = nums.get(j);
+        }
+        for(int k = 0; k<start; k++){
+            holder[k+nums.size()-start] = nums.get(k);
+        }
+        for(int m = 0; m<nums.size(); m++){
+            nums.set(m, holder[m]);
+        }
+    }
+}
