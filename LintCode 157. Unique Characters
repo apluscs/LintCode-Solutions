@@ -1,0 +1,18 @@
+public class Solution {
+    /*
+     * @param str: A string
+     * @return: a boolean
+     */
+    public boolean isUnique(String str) {
+        boolean[] occur = new boolean[146];
+        for(int i = 0; i<str.length(); i++){
+            if(occur[str.charAt(i)-32]){
+                return false;
+            }
+            else{
+                occur[str.charAt(i)-32] = true;
+            }
+        }
+        return true;
+    }
+}
