@@ -1,0 +1,28 @@
+public class Solution {
+    /*
+     * @param s: A string
+     * @return: A string
+     */
+    public String reverseWords(String s) {
+        String sent = s.trim();
+        ArrayList<String> words = new ArrayList<>();
+        while(sent.length() > 0){
+            int i = sent.indexOf(" ");
+            if(i > -1){
+                words.add(sent.substring(0,i));
+                sent = sent.substring(i+1);
+                sent = sent.trim();
+            }
+            else{
+                words.add(sent);
+                sent = "";
+            }
+        }
+        sent = "";
+        for(int i = words.size()-1; i>-1; i--){
+            sent += words.get(i) + " ";
+        }
+        sent = sent.trim();
+        return sent;
+    }
+}
