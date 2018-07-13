@@ -1,0 +1,23 @@
+public class Solution {
+    /**
+     * @param A: A string
+     * @param B: A string
+     * @return: if string A contains all of the characters in B return true else return false
+     */
+    public boolean compareStrings(String A, String B) {
+        for(int i = 0; i<B.length(); i++){
+            String test = B.substring(i, i+1);
+            int mark = A.indexOf(test);
+            if(mark>0){
+                A = A.substring(0,mark) + A.substring(mark+1);
+            }
+            else if(mark == 0){
+                A = A.substring(1);
+            }
+            else{
+                return false;
+            }
+        }
+        return true;
+    }
+}
