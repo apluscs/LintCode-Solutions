@@ -1,0 +1,18 @@
+public class Solution {
+    /**
+     * @param names: a string array
+     * @return: a string array
+     */
+    public List<String> nameDeduplication(String[] names) {
+        List<String> result = new ArrayList<>();
+        HashMap<String, Integer> map = new HashMap<String, Integer>();
+        for(String s: names){
+            s = s.toLowerCase();
+            if(map.get(s) == null){
+                result.add(s);
+                map.put(s,0);
+            }
+        }
+        return result;
+    }
+}
