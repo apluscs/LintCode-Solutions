@@ -1,0 +1,30 @@
+public class Solution {
+    /**
+     * @param n: An integer
+     * @return: true if this is a happy number or false
+     */
+    private HashMap<Integer, Integer> map;
+     
+    public Solution(){
+        map = new HashMap<Integer, Integer>();
+    }
+    
+    public boolean isHappy(int num) {
+        ArrayList<Integer> digits = new ArrayList<>();
+        while(num>0){
+            digits.add(num % 10);
+            num /= 10;
+        }
+        int sum = 0;
+        for(int i: digits){
+            sum+= Math.pow(i,2);
+        }
+        if(sum == 1){return true;}
+        if(map.get(sum) != null){
+            System.out.println("first part");
+            return false;
+        }
+        map.put(sum,0);
+        return isHappy(sum);
+    }
+}
