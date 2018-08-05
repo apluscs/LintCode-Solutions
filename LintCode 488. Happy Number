@@ -17,7 +17,7 @@ public class Solution {
         }
         int sum = 0;
         for(int i: digits){
-            sum+= Math.pow(i,2);
+            sum+= sum^2;
         }
         if(sum == 1){return true;}
         if(map.get(sum) != null){
