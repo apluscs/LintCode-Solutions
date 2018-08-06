@@ -1,0 +1,33 @@
+public class TwoSum {
+    /*
+     * @param number: An integer
+     * @return: nothing
+     */
+    HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();    //must allow for repeats
+     
+    public void add(int number) {
+         map.put(number, map.getOrDefault(number,0)+1);
+    }
+
+    /*
+     * @param value: An integer
+     * @return: Find if there exists any pair of numbers which sum is equal to the value.
+     */
+    public boolean find(int target) {
+        for(Map.Entry<Integer, Integer> entry: map.entrySet()){
+            int key = entry.getKey();
+            if(target%2==0){
+                if(key==target/2 && entry.getValue()>1){
+                    return true;
+                }
+                else if(key!=target/2 && map.containsKey(target-key)){
+                    return true;
+                }
+            }
+            else if(map.containsKey(target-key)){
+                return true;
+            }
+        }
+        return false;
+    }
+}
