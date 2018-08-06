@@ -6,26 +6,23 @@ public class Solution {
      * @return: an integer array
      */
     public int[] intersection(int[] nums1, int[] nums2) {
-        HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
-        HashMap<Integer, Integer> mockResult = new HashMap<Integer, Integer>();
+        HashSet<Integer> set = new HashSet<Integer>(); //easier if it's a set
+        HashSet<Integer> mockResult = new HashSet<Integer>();
         for(int n: nums1){
-            if(map.get(n) == null){
-                map.put(n,0);
-            }    
+            set.add(n); //each unique entry in nums1 is only added once
         }
         for(int n: nums2){
-            if(map.get(n) != null && mockResult.get(n) == null){
-                mockResult.put(n,0);
+            if(set.contains(n) && !mockResult.contains(n)){
+                mockResult.add(n);
             }
         }
         int[] result = new int[mockResult.size()];
         int i = 0;
-        for(Map.Entry<Integer, Integer> entry: mockResult.entrySet()){
-			int key = entry.getKey();
-			result[i] = key;
+        for(int n: mockResult){
+			result[i] = n;
 			i++;
 		}
-	Arrays.sort(result);
+		Arrays.sort(result);
         return result;
     }
 }
