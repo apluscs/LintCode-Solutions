@@ -25,6 +25,7 @@ public class Solution {
 			result[i] = key;
 			i++;
 		}
+	Arrays.sort(result);
         return result;
     }
 }
