@@ -11,7 +11,6 @@ public class Solution {
                 start = i+1;
             }
         }
-        System.out.println(start);
         for(int j = start; j<nums.size(); j++){
             holder[j-start] = nums.get(j);
         }
