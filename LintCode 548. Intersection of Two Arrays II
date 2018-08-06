@@ -1,0 +1,32 @@
+public class Solution {
+    
+    /*
+     * @param nums1: an integer array
+     * @param nums2: an integer array
+     * @return: an integer array
+     */
+    public int[] intersection(int[] nums1, int[] nums2) {
+        HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();    //must be map for repeat occurences
+        ArrayList<Integer> mockResult = new ArrayList<Integer>();
+        for(int n: nums1){
+            if(!map.containsKey(n)){
+                map.put(n,1);
+            }
+            else{
+                map.put(n,map.get(n)+1);
+            }
+        }
+        for(int n: nums2){
+            if(map.containsKey(n) && map.get(n)>0){
+                mockResult.add(n);
+                map.put(n, map.get(n)-1);
+            }
+        }
+        int[] result = new int[mockResult.size()];
+        for(int i = 0; i<result.length; i++){
+            result[i] = mockResult.get(i);
+        }
+        Arrays.sort(result);
+        return result;
+    }
+}
