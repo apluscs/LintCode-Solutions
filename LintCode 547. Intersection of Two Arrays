@@ -1,0 +1,30 @@
+public class Solution {
+    
+    /*
+     * @param nums1: an integer array
+     * @param nums2: an integer array
+     * @return: an integer array
+     */
+    public int[] intersection(int[] nums1, int[] nums2) {
+        HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
+        HashMap<Integer, Integer> mockResult = new HashMap<Integer, Integer>();
+        for(int n: nums1){
+            if(map.get(n) == null){
+                map.put(n,0);
+            }    
+        }
+        for(int n: nums2){
+            if(map.get(n) != null && mockResult.get(n) == null){
+                mockResult.put(n,0);
+            }
+        }
+        int[] result = new int[mockResult.size()];
+        int i = 0;
+        for(Map.Entry<Integer, Integer> entry: mockResult.entrySet()){
+			int key = entry.getKey();
+			result[i] = key;
+			i++;
+		}
+        return result;
+    }
+}
