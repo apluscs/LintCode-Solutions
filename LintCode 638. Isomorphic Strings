@@ -1,0 +1,23 @@
+public class Solution {
+    /**
+     * @param s: a string
+     * @param t: a string
+     * @return: true if the characters in s can be replaced to get t or false
+     */
+    public boolean isIsomorphic(String s, String t) {
+        HashMap<Character, Character> map = new HashMap<Character, Character>();    //s to t
+        HashMap<Character, Character> map2 = new HashMap<Character, Character>();   //value in t to its key in s,ensures no duplicate value(no value has 2 keys)
+        for(int i = 0; i<s.length(); i++){
+            char key = s.charAt(i);
+            char value = t.charAt(i);
+            if(!map.containsKey(key)){
+                map.put(key, value);
+                map2.put(value, key);
+            }
+            else if(!map.get(key).equals(value) || !map2.get(value).equals(key)){
+                return false;
+            }
+        }
+        return true;
+    }
+}
