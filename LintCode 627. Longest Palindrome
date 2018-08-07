@@ -1,0 +1,31 @@
+public class Solution {
+    /**
+     * @param s: a string which consists of lowercase or uppercase letters
+     * @return: the length of the longest palindromes that can be built
+     */
+    public int longestPalindrome(String s) {
+        int result = 0;
+        HashMap<Character, Integer> map = new HashMap<Character, Integer>();
+        boolean usedSingle = false;
+        for(int i = 0; i<s.length(); i++){
+            char c = s.charAt(i);
+            map.put(c, map.getOrDefault(c,0)+1);
+        }
+        for(Map.Entry<Character, Integer> entry: map.entrySet()){
+            int count = entry.getValue();
+            if(count >= 2){
+                result += count/2 * 2;
+                if(count%2==1 && !usedSingle){
+                    result++;
+                    usedSingle = true;
+                }
+            }
+            else if(!usedSingle){
+                result++;
+                usedSingle = true;
+            }
+        }
+        
+        return result;
+    }
+}
