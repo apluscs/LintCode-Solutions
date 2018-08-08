@@ -1,0 +1,30 @@
+public class Solution {
+    /**
+     * @param num: a string
+     * @return: true if a number is strobogrammatic or false
+     */
+    public boolean isStrobogrammatic(String num) {
+        int[] digits = new int[num.length()];
+        int length = digits.length;
+        HashSet<Integer> valid = new HashSet<Integer>();
+        valid.add(0);   valid.add(1);   valid.add(8);   valid.add(6);   valid.add(9);
+        for(int i = 0; i<length; i++){
+            digits[i] = Integer.parseInt(num.substring(i,i+1));
+        }
+        if(length%2 == 1){
+            int mid = digits[length/2];
+            if(!valid.contains(mid) || mid==6 || mid==9){
+                return false;
+            }
+        }
+        for(int i = 0; i<length/2; i++){
+            int mark = digits[i];
+            if(!valid.contains(mark)){
+                return false;
+            }
+            else if(digits[length-i-1]!=mark && mark!=6 && mark!=9 || mark==9 && digits[length-i-1]!=6 || mark==6 && digits[length-i-1]!=9)
+                {return false;}
+        }
+        return true;
+    }
+}
