@@ -1,0 +1,25 @@
+public class Solution {
+    /**
+     * @param Matrix: the input
+     * @return: the element which appears every row
+     */
+    public int FindElements(int[][] matrix) {
+        ArrayList<Integer> common = new ArrayList<>();
+        for(int c: matrix[0]){
+            common.add(c);
+        }
+        for(int r = 1; r<matrix.length; r++){
+            HashSet<Integer> row = new HashSet<>();
+            for(int c = 0; c<matrix[0].length; c++){
+                row.add(matrix[r][c]);
+            }
+            for(int i = 0; i<common.size(); i++){
+                if(!row.contains(common.get(i))){
+                    common.remove(i);
+                    i--;
+                }
+            }
+        }
+        return common.get(0);
+    }
+}
