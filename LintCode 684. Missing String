@@ -1,0 +1,28 @@
+public class Solution {
+    /**
+     * @param str1: a given string
+     * @param str2: another given string
+     * @return: An array of missing string
+     */
+    public List<String> missingString(String str1, String str2) {
+        List<String> result = new ArrayList<>();
+        HashSet<String> map = new HashSet<String>();
+        str1 += " ";
+        str2 += " ";
+        while(str2.length() > 0){
+            int i = str2.indexOf(" ");  //assumes str2 is already trimmed, no double spaces
+            String first = str2.substring(0,i);
+            map.add(first);
+            str2 = str2.substring(i+1);
+        }
+        while(str1.length() > 0){
+            int j = str1.indexOf(" ");  
+            String first = str1.substring(0,j);
+            if(!map.contains(first)){
+                result.add(first);
+            }
+            str1 = str1.substring(j+1);
+        }
+        return result;
+    }
+}
