@@ -1,0 +1,19 @@
+public class Solution {
+    /**
+     * @param A: lists A
+     * @param B: lists B
+     * @return: the index mapping
+     */
+    public int[] anagramMappings(int[] B, int[] A) {
+        int[] result = new int[A.length];
+        HashMap<Integer, Integer> indexA = new HashMap<>();
+        for(int i = 0; i<A.length; i++){
+            indexA.put(A[i], i);
+        }
+        for(int i = 0; i<B.length; i++){
+            result[i] = indexA.get(B[i]);
+        }
+        return result;
+        
+    }
+}
