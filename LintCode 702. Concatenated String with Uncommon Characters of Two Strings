@@ -1,0 +1,32 @@
+public class Solution {
+    /**
+     * @param s1: the 1st string
+     * @param s2: the 2nd string
+     * @return: uncommon characters of given strings
+     */
+    public String concatenetedString(String s1, String s2) {
+        String result = "";
+        HashSet<Character> first = new HashSet<Character>();
+        HashSet<Character> common = new HashSet<Character>();
+        for(int i = 0; i<s1.length(); i++){
+            char c = s1.charAt(i);
+            first.add(c);
+        }
+        for(int i = 0; i<s2.length(); i++){
+            char c = s2.charAt(i);
+            if(first.contains(c)){
+                s2 = s2.substring(0,i) + s2.substring(i+1);
+                common.add(c);
+                i--;
+            }
+        }
+        for(int i = 0; i<s1.length(); i++){
+            char c = s1.charAt(i);
+            if(common.contains(c)){
+                s1 = s1.substring(0,i) + s1.substring(i+1);
+                i--;
+            }
+        }
+        return s1 + s2;
+    }
+}
