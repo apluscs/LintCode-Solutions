@@ -1,0 +1,20 @@
+public class Solution {
+    /**
+     * @param arr: the positions
+     * @return: minimum number of moves
+     */
+    public int movingStones(int[] arr) {
+        Arrays.sort(arr);
+        int evens = 0; int odds = 0;    int count = 2;
+        for(int i = 0; i<arr.length; i++){
+            evens += Math.abs(count-arr[i]);
+            count += 2;
+        }
+        count = 1;
+        for(int i = 0; i<arr.length; i++){
+            odds += Math.abs(count-arr[i]);
+            count += 2;
+        }
+        return Math.min(evens, odds);
+    }
+}
