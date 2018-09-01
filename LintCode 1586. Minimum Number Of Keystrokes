@@ -1,0 +1,60 @@
+public class Solution {
+    /**
+     * @param s: the English word
+     * @return: The number of keystrokes
+     */
+    public int getAns(String s) {
+        int[] consecutive = new int[s.length()];
+        char[] chars = s.toCharArray();
+        int slow = 0; int count = 1;
+        for(int i=0; i<chars.length - 1; i++){
+            if(chars[i] > 96 && chars[i+1] < 96 || chars[i] < 96 && chars[i+1] > 96){
+                if(chars[i] > 96){
+                    consecutive[slow] = -count;
+                }
+                else{
+                    consecutive[slow] = count;
+                }
+                slow = i+1;
+                count = 1;
+            }
+            else{
+                count++;
+            }
+        }
+        if(chars[slow] > 96){   //adding the last portion on
+            consecutive[slow] = slow - chars.length;
+        }
+        else{
+            consecutive[slow] = chars.length - slow;
+        }
+        int result = 0; boolean caps = false;
+        for(int i = 0; i<consecutive.length; i++){
+            if(caps==false){
+                if(consecutive[i] > 1){
+                    result += consecutive[i] + 1;
+                    caps = true;
+                }
+                else if(consecutive[i]<0){
+                    result += Math.abs(consecutive[i]);
+                }
+                else{
+                    result += 2 * Math.abs(consecutive[i]);
+                }
+            }
+            else if(caps==true){
+                if(consecutive[i] < -1){
+                    result += Math.abs(consecutive[i]) + 1;
+                    caps = false;
+                }
+                else if(consecutive[i]>0){
+                    result += Math.abs(consecutive[i]);
+                }
+                else{
+                    result += 2 * Math.abs(consecutive[i]);
+                }
+            }
+        }
+        return result;
+    }
+}
