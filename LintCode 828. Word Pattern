@@ -1,0 +1,37 @@
+public class Solution {
+    /**
+     * @param pattern: a string, denote pattern string
+     * @param teststr: a string, denote matching string
+     * @return: an boolean, denote whether the pattern string and the matching string match or not
+     */
+    public boolean wordPattern(String pattern, String str) {
+        HashMap<Character, String> letterWord  = new HashMap<Character, String>();
+        HashMap<String, Character> wordLetter  = new HashMap<String, Character>();
+        char[] order = pattern.toCharArray();
+        int count = 1;
+        str = str.trim();
+        while(count <= order.length && str.length() > 0){
+            int space = str.indexOf(" ");
+            String temp = "";
+            if(space > -1) {
+                temp = str.substring(0, space);
+            }
+            else{
+                temp = str;
+                str = "";
+            }
+            char letter = order[count-1];
+            str = str.substring(space + 1);
+            if(letterWord.get(letter) != null && !(letterWord.get(letter).equals(temp)) || wordLetter.get(temp) != null && !(wordLetter.get(temp).equals(letter))){
+                return false;
+            }
+            letterWord.put(letter, temp);
+            wordLetter.put(temp, letter);
+            count++;
+        }
+        if(count > order.length + 1 || str.length() > 0){
+            return false;
+        }
+        return true;
+    }
+}
