@@ -1,0 +1,25 @@
+public class Solution {
+    /**
+     * @param s: the given string
+     * @return: if a permutation of the string could form a palindrome
+     */
+    public boolean canPermutePalindrome(String str) {
+        HashMap<Character, Integer> map = new HashMap<Character, Integer>();
+        char[] letters = str.toCharArray();
+        for(char c: letters){
+            map.put(c, map.getOrDefault(c,0)+1);
+        }
+        boolean usedSingle = false;
+        for(Map.Entry<Character, Integer> e: map.entrySet()){
+            if(e.getValue() % 2 == 1){
+                if(usedSingle == false){
+                    usedSingle = true;
+                }
+                else{
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+}
