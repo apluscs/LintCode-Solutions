@@ -1,0 +1,29 @@
+public class Solution {
+    /**
+     * @param cpdomains: a list cpdomains of count-paired domains
+     * @return: a list of count-paired domains
+     */
+    public List<String> subdomainVisits(String[] cpdomains) {
+        ArrayList<String> result = new ArrayList<>();
+        HashMap<String, Integer> map = new HashMap<>();
+        for(String cpdom: cpdomains){
+            int space = cpdom.indexOf(" ");
+            int views = Integer.parseInt(cpdom.substring(0, space));
+            cpdom = cpdom.substring(space + 1);
+            while(cpdom.length() > 0){
+                map.put(cpdom, map.getOrDefault(cpdom, 0) + views);
+                int dot = cpdom.indexOf(".");
+                if(dot > -1){
+                    cpdom = cpdom.substring(dot + 1);
+                }
+                else{
+                    cpdom = "";
+                }
+            }
+        }
+        for(Map.Entry<String, Integer> e: map.entrySet()){
+            result.add(e.getValue() + " " + e.getKey());
+        }
+        return result;
+    }
+}
