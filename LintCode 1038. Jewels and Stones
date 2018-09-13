@@ -1,0 +1,20 @@
+public class Solution {
+    /**
+     * @param J: the types of stones that are jewels
+     * @param S: representing the stones you have
+     * @return: how many of the stones you have are also jewels
+     */
+    public int numJewelsInStones(String J, String S) {
+        HashSet<Character> set = new HashSet<>();
+        for(int i = 0; i < J.length(); i++){
+            set.add(J.charAt(i));
+        }
+        int count = 0;
+        for(int i = 0; i < S.length(); i++){
+            if(set.contains(S.charAt(i))){
+                count++;
+            }
+        }
+        return count;
+    }
+}
