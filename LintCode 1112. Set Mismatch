@@ -1,0 +1,23 @@
+public class Solution {
+    /**
+     * @param nums: an array
+     * @return: the number occurs twice and the number that is missing
+     */
+    public int[] findErrorNums(int[] nums) {
+        int[] result = new int[2];
+        HashSet<Integer> set = new HashSet<>();
+        for(int i = 0; i<nums.length; i++){
+            set.add(i+1);
+        }
+        for(int i = 0; i<nums.length; i++){
+            if(set.contains(nums[i])){
+                set.remove(nums[i]);
+            }
+            else{
+                result[0] = nums[i];
+            }
+        }
+        result[1] = set.iterator().next();
+        return result;
+    }
+}
