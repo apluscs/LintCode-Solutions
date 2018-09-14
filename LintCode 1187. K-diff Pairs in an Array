@@ -1,0 +1,37 @@
+public class Solution {
+    /**
+     * @param nums: an array of integers
+     * @param k: an integer
+     * @return: the number of unique k-diff pairs
+     */
+    public int findPairs(int[] nums, int k) {
+
+        int count = 0;
+        if(k != 0){
+            HashMap<Integer, Integer> map = new HashMap<>();
+            for(int i = 0; i<nums.length; i++){
+                map.put(nums[i], i);
+            }
+            for(Map.Entry<Integer, Integer> e: map.entrySet()){
+                if(map.containsKey(e.getKey() + k)){
+                    count++;
+                }
+            }    
+        }
+        else{
+           HashSet<Integer> potential = new HashSet<>();
+           HashSet<Integer> used = new HashSet<>();
+           for(int n: nums){
+               if(potential.contains(n) && !used.contains(n)){
+                   count++;
+                   potential.remove(n);
+                   used.add(n);
+               }
+               else if(!potential.contains(n)){
+                   potential.add(n);
+               }
+           }
+        }
+        return count;
+    }
+}
