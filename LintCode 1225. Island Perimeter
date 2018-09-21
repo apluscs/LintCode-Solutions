@@ -1,0 +1,23 @@
+public class Solution {
+    /**
+     * @param grid: a 2D array
+     * @return: the perimeter of the island
+     */
+    public int islandPerimeter(int[][] grid) {
+        int lands = 0;  int neighbors = 0;
+        for(int r = 0; r<grid.length; r++){
+            for(int c = 0; c<grid[0].length; c++){
+                if(grid[r][c]==1){
+                    lands ++;
+                    if(r<grid.length-1 && grid[r+1][c]==1){
+                        neighbors++;
+                    }
+                    if(c<grid[0].length-1 && grid[r][c+1]==1){
+                        neighbors++;
+                    }
+                }
+            }
+        }
+        return lands*4 - neighbors*2;
+    }
+}
