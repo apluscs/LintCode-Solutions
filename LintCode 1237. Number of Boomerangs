@@ -1,0 +1,30 @@
+public class Solution {
+    /**
+     * @param points: a 2D array
+     * @return: the number of boomerangs
+     */
+    public int numberOfBoomerangs(int[][] points) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+        int result = 0;
+        for(int i = 0; i<points.length; i++){
+            for(int j = 0; j<points.length; j++){
+                if(i != j){
+                    int distance = getDistance(points[i], points[j]);
+                    map.put(distance, map.getOrDefault(distance, 0)+1);
+                }
+            }
+            for(int count: map.values()){
+                result += count * (count-1);
+            }
+            map.clear();
+        }
+       
+        return result;
+    }
+    
+    private int getDistance(int[] p, int[] q){  //somehow moving this part to a private method makes it go fast enough??
+        int dx = p[0]-q[0];
+        int dy = p[1]-q[1];
+        return dx*dx + dy*dy;
+    }
+}
