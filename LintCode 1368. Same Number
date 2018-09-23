@@ -1,0 +1,23 @@
+public class Solution {
+    /**
+     * @param nums: the arrays
+     * @param k: the distance of the same number
+     * @return: the ans of this question
+     */
+    public String sameNumber(int[] nums, int k) {
+        if(k < 2){  //only thing different from 1319 is that this requires the difference in indices to be less than, not less than or equal to k
+            return "NO";
+        }
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for(int i = 0; i<nums.length; i++){
+            if(map.containsKey(nums[i])){
+                int diff = map.get(nums[i])-i;
+                if((-diff < k && diff <= 0 || diff < k && diff >= 0)){
+                    return "YES";
+                }
+            }
+            map.put(nums[i], i);    
+        }
+        return "NO";
+    }
+}
