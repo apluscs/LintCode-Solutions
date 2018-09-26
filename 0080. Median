@@ -1,0 +1,45 @@
+public class Solution {
+    /**
+     * @param nums: A list of integers
+     * @return: An integer denotes the middle number of the array
+     */
+    public int median(int[] A) {
+        halveIt(A, 0, A.length-1);
+        if(A.length % 2 == 1){
+            return A[A.length/2];
+        }
+        return A[A.length/2-1];
+    }
+    
+    public void halveIt(int[] arr, int start, int end){
+        if(end <= start){
+            return;
+        }
+        int mid = (start+end)/2;
+        halveIt(arr, start, mid);
+        halveIt(arr, mid + 1, end);
+        mergeSortedArray(arr, start, end, mid);
+    }
+    
+    public void mergeSortedArray(int[] ar, int left, int right, int mid) {
+        int[] temp = new int[right - left + 1]; //as small as possible to save space
+        int a = left; int b = mid + 1;  int i = 0;
+        while(a<=mid && b<=right){
+            if(ar[a] <= ar[b]){
+                temp[i++] = ar[a++];
+            }
+            else{
+                temp[i++] = ar[b++];
+            }
+        }
+        while(a <= mid){
+            temp[i++] = ar[a++];
+        }
+        while(b <= right){
+            temp[i++] = ar[b++];
+        }
+        for(int j = 0; j< temp.length; j++){
+            ar[left++] = temp[j];
+        }
+    }
+}
