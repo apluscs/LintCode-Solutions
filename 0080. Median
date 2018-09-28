@@ -43,3 +43,54 @@ public class Solution {
         }
     }
 }
+
+
+//faster way with quickSelect. Saves time by leaving some parts of the array unsorted
+public class Solution {
+    /**
+     * @param nums: A list of integers
+     * @return: An integer denotes the middle number of the array
+     */
+    public int left;
+    public int target;
+    
+    public int median(int[] arr) {
+        if(arr.length % 2 == 1){
+            target = arr.length/2;
+        }
+        else{
+            target = arr.length/2 - 1;
+        }
+        quickSelect(arr, 0, arr.length-1);
+        return arr[left];
+    }
+    
+    public void quickSelect(int[] arr, int start, int end){
+        int pivotIn = (int)(Math.random() * (end - start + 1)) + start;
+        left = start;
+        int pivot = arr[pivotIn];
+        swap(arr, pivotIn, end);
+        for(int i = start; i <= end; i++){
+            if(arr[i] <= pivot){
+                swap(arr, left++, i);
+            }
+        }
+        left--;
+        if(target == left){
+            return;
+        }
+        else if(target < left){
+            quickSelect(arr, start, left-1);
+        }
+        else{
+            quickSelect(arr, left + 1, end);
+        }
+    }
+    
+    private void swap(int[] arr, int a, int b){
+        int temp = arr[a];
+        arr[a] = arr[b];
+        arr[b] = temp;
+    }
+}
+
