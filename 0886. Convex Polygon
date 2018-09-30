@@ -7,7 +7,7 @@ public class Solution {
         long sign = 0;    
         for(int a = 0; a < point.length; a++){
             long newSign = cross(point[a], point[(a + 1) % point.length], point[(a + 2) % point.length]);
-            if(sign == 0){  //cannot be a == 0. why??
+            if(sign == 0){  //cannot be a == 0. why?? must account for when sign = 0. this means theta = 180 degrees
                 sign = newSign;
             }
             if(newSign * sign < 0){
