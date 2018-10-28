@@ -1,0 +1,24 @@
+public class Solution {
+    /**
+     * @param A: a array of integers
+     * @return : return an integer
+     */
+    public int removeDuplicates(int[] nums) {
+        if(nums.length == 0){
+            return 0;
+        }
+        int slow = 1;
+        int count = 1;
+        for(int fast = 1; fast<nums.length; fast++){
+            if(nums[fast] > nums[fast-1]){
+                nums[slow++] = nums[fast];
+                count = 1;
+            }
+            else if(count==1){   //nums[fast] must = must[fast-1]
+                count++;
+                nums[slow++] = nums[fast];
+            }
+        }
+        return slow;
+    }
+}
