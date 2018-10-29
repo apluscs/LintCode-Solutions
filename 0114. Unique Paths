@@ -1,0 +1,82 @@
+//first version.... but there was a much easier way!
+public class Solution {
+    /**
+     * @param m: positive integer (1 <= m <= 100)
+     * @param n: positive integer (1 <= n <= 100)
+     * @return: An integer
+     */
+    public int uniquePaths(int m, int n) {
+        int[][] matrix = new int[m][n];
+        for(int i=0; i<m; i++){
+            matrix[i][0]++;
+        }
+        for(int i=0; i<n; i++){
+            matrix[0][i]++;
+        }
+        int start = 1;
+        while(start<n && start<m){
+            matrix[start][start] = matrix[start-1][start]+matrix[start][start-1];
+            fillDown(matrix, start, m);
+            fillAcross(matrix, start, n);
+            start++;
+        }
+        printMatrix(matrix, m, n);
+        return matrix[m-1][n-1];
+    }
+    
+    private void fillDown(int[][] matrix, int start, int max){
+        for(int i = start; i<max; i++){
+            System.out.println(i);
+            matrix[i][start] = matrix[i-1][start]+matrix[i][start-1];
+        }
+    }
+    
+    private void fillAcross(int[][] matrix, int start, int max){
+        for(int i = start; i<max; i++){
+            matrix[start][i] = matrix[start-1][i]+matrix[start][i-1];
+        }
+    }
+    
+    public void printMatrix(int[][] matrix, int m, int n){
+        for(int row=0; row<m; row++){
+            for(int columns=0; columns<n; columns++){
+                 System.out.printf("%d     ", matrix[row][columns]);
+            }
+            System.out.printf("\n");
+        }
+    }
+}
+
+//second version
+public class Solution {
+    /**
+     * @param m: positive integer (1 <= m <= 100)
+     * @param n: positive integer (1 <= n <= 100)
+     * @return: An integer
+     */
+    public int uniquePaths(int m, int n) {
+        int[][] matrix = new int[m][n];
+        for(int i=0; i<m; i++){
+            for(int j = 0; j<n; j++){
+                if(i==0 || j==0){
+                    matrix[i][j] = 1;
+                }
+                else{
+                    matrix[i][j] = matrix[i-1][j] + matrix[i][j-1];
+                }
+            }
+        }
+        printMatrix(matrix, m, n);
+        return matrix[m-1][n-1];
+    }
+    
+
+    public void printMatrix(int[][] matrix, int m, int n){
+        for(int row=0; row<m; row++){
+            for(int columns=0; columns<n; columns++){
+                 System.out.printf("%d     ", matrix[row][columns]);
+            }
+            System.out.printf("\n");
+        }
+    }
+}
