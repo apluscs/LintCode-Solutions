@@ -1,0 +1,24 @@
+public class Solution {
+    /*
+     * @param A: A list of integers
+     * @param elem: An integer
+     * @return: The new length after remove
+     */
+    public int removeElement(int[] arr, int target) {
+        int front = 0;
+        int back = arr.length-1;
+        while(front < back+1){
+            if(arr[front] == target){
+                swap(arr, front--, back--);
+            }
+            front++;
+        }
+        return front;
+    }
+    
+    public void swap(int[] arr, int a, int b){
+        int temp = arr[a];
+        arr[a] = arr[b];
+        arr[b] = temp;
+    }
+}
