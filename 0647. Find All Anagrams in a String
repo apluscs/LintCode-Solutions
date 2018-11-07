@@ -1,0 +1,39 @@
+public class Solution {
+    /**
+     * @param s: a string
+     * @param p: a string
+     * @return: a list of index
+     */
+    public List<Integer> findAnagrams(String s, String p) {
+        List<Integer> result = new ArrayList<Integer>();
+        if(p.length() > s.length()){
+            return result;
+        }
+        int[] hash = new int[256];
+        for(int i = 0; i<p.length(); i++){    //copies p frequencies to hash
+            hash[p.charAt(i)]++;
+        }
+        int count = p.length();  
+        int left = 0;   
+        int right = 0;
+        while(right < s.length()){
+            if(hash[s.charAt(right)] > 0){   //char at s matches something in p. 
+                count--;    //one closer to a perfect match!
+            }
+            hash[s.charAt(right)]--; 
+            right++; //Moves right one every time
+            
+            if(count == 0){    //reached a perfect match! (anagram found)
+                result.add(left);
+            }
+            if(right-left == p.length()){
+                if(hash[s.charAt(left)] >= 0){  //lost this character, so must adjust match frequencies
+                    count++;   //one farther from a perfect match :(
+                }
+                hash[s.charAt(left)]++;
+                left++;
+            }
+        }
+        return result;
+    }
+}
