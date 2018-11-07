@@ -1,0 +1,38 @@
+public class Stack {
+    List<Integer> stack = new ArrayList<>();
+    /*
+     * @param x: An integer
+     * @return: nothing
+     */
+    public void push(int x) {
+        stack.add(x);
+    }
+    /*
+     * @return: nothing
+     */
+    public void pop() {
+        int size = stack.size();
+        if(size != 0){
+            stack.remove(size-1);
+        }
+    }
+
+    /*
+     * @return: An integer
+     */
+    public int top() {
+        int size = stack.size();
+        if(size != 0){
+            int result = stack.get(size-1);
+            return result; 
+        }
+        return 0;
+    }
+
+    /*
+     * @return: True if the stack is empty
+     */
+    public boolean isEmpty() {
+        return(stack.size() == 0);
+    }
+}
