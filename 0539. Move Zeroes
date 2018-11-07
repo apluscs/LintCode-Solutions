@@ -1,0 +1,25 @@
+public class Solution {
+    /**
+     * @param nums: an integer array
+     * @return: nothing
+     */
+    public void moveZeroes(int[] nums) {
+        int nextZero = nums.length - 1;
+        int i = nextZero-1;   //going backwards
+        while(i >= 0){
+            if(nums[i] == 0){
+                moveRight(nums,i, nextZero);
+                nextZero--;
+            }
+            i--;
+        }
+    }
+    
+    public void moveRight(int[] nums, int from, int to){
+        for(int i = from; i < to; i++){
+            int temp = nums[i]; //swap function
+            nums[i] = nums[i+1];
+            nums[i+1] = temp;
+        }
+    }
+}
