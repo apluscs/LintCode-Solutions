@@ -1,0 +1,27 @@
+public class Solution {
+    /**
+     * @param n: a Integer
+     * @return: a spiral array
+     */
+    public int[][] spiralArray(int n) {
+        int value = 1; 
+        int shell = 0;
+        int[][] result = new int[n][n];
+        while(value <= n*n){
+        	for(int c = shell; c < n-shell; c++){   //complete top row
+        		result[shell][c] = value++;
+        	}
+        	for(int r = shell+1; r < n-shell; r++){ //right edge, starting one down
+        	    result[r][n-shell-1] = value++;
+        	}
+        	for(int d = n-shell-2; d >= shell; d--){    //bottom edge, starting one from the right
+        	    result[n-shell-1][d] = value++;
+        	}
+        	for(int s = n-shell-2; s > shell; s--){ //left edge, starting one from bottom and ending one from top
+        	    result[s][shell] = value++;
+        	}
+        	shell++;
+        }
+        return result;
+    }
+}
