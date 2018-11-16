@@ -1,0 +1,28 @@
+public class Solution {
+    /**
+     * @param bits: a array represented by several bits. 
+     * @return: whether the last character must be a one-bit character or not
+     */
+    public boolean isOneBitCharacter(int[] bits) {
+        if(bits.length < 2){
+            return true;
+        }
+        if(bits[bits.length-2] == 0){
+            return true;
+        }
+        int i = 0;
+        while(i < bits.length-1){
+            if(bits[i] == 1){
+                i++;
+                if(i == bits.length-2){
+                    return true;    //third to last is 1
+                }
+            }
+            else if(i == bits.length-2){
+                return true;    //second to last is 0
+            }
+            i++;
+        }
+        return false;
+    }
+}
