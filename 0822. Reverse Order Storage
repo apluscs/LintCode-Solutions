@@ -1,0 +1,14 @@
+public class Solution {
+    /**
+     * @param head: the given linked list
+     * @return: the array that store the values in reverse order 
+     */
+    public List<Integer> reverseStore(ListNode head) {
+        List<Integer> result = new ArrayList<>();
+        while(head != null){
+            result.add(0, head.val);
+            head = head.next;
+        }
+        return result;
+    }
+}
