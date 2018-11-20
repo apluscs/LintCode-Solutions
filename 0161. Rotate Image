@@ -22,3 +22,27 @@ public class Solution {
     }
     
 }
+
+//faster way is to rotate the 4 corners of each "box", include all the boxes
+//moves bottom left corner to top left, bottom right corner to bottom left, top right corner to bottom right, and top left 
+//corner to top right
+//box rotates a little bit to the right every time
+
+public class Solution {
+    /**
+     * @param matrix: a lists of integers
+     * @return: nothing
+     */
+    public void rotate(int[][] matrix) {
+        int length = matrix.length;
+        for(int i = 0; i < length/2; i++){
+            for(int j = i; j < length - 2*i - 1 + i; j++){   //adjusts inner shell for length, only goes halfway across
+                int temp = matrix[i][j];
+                matrix[i][j] = matrix[length-1-j][i];
+                matrix[length-1-j][i] = matrix[length-1-i][length-1-j];
+                matrix[length-1-i][length-1-j] = matrix[j][length-1-i];
+                matrix[j][length-1-i] = temp;
+            }
+        }
+    }
+}
