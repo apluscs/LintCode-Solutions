@@ -1,0 +1,24 @@
+public class Solution {
+    /**
+     * @param matrix: a lists of integers
+     * @return: nothing
+     */
+    public void rotate(int[][] start) {
+        int length = start.length;
+        for(int i = 0; i < length - 1; i++){
+			for(int j = i + 1; j < length; j++){  //reflects across downward sloping diagonal
+				int temp = start[i][j];
+				start[i][j] = start[j][i];
+				start[j][i] = temp;
+			}
+		}
+        for(int i = 0; i < length; i++){
+			for(int j = 0; j < length/2; j++){  //reflects left to right
+			    int temp = start[i][j];
+				start[i][j] = start[i][length-j-1];
+				start[i][length-j-1] = temp;
+			}
+		}
+    }
+    
+}
