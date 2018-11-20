@@ -23,3 +23,22 @@ public class Solution {
         }
     }
 }
+
+
+//another version moves all non-zeroes to the front
+public class Solution {
+    /**
+     * @param nums: an integer array
+     * @return: nothing
+     */
+    public void moveZeroes(int[] nums) {
+        int to = 0; //where non-zero digits will land
+        for(int i = 0; i < nums.length; i++){
+            if(nums[i] != 0){
+                int temp = nums[i];
+                nums[i] = nums[to];
+                nums[to++] = temp;
+            }
+        }
+    }
+}
