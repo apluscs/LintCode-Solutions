@@ -1,0 +1,25 @@
+public class Solution {
+    /**
+     * @param nums: an array
+     * @param k: an integer
+     * @return: rotate the array to the right by k steps
+     */
+    public int[] rotate(int[] nums, int n) {
+        int length = nums.length;
+        int k = n % length;
+        reverse(nums,0,length-k-1);
+        reverse(nums,length-k, length-1);
+        reverse(nums,0,length-1);
+        return nums;
+    }
+    
+    public void reverse(int[] nums, int a, int b){
+        int start = a; 
+        int end = b;
+        while(start < end){
+            int temp = nums[start]; //swaps the two
+            nums[start++] = nums[end];
+            nums[end--] = temp;
+        }
+    }
+}
