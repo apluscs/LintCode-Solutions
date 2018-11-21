@@ -1,0 +1,20 @@
+public class Solution {
+    /**
+     * @param num: a positive number
+     * @return: true if it's a palindrome or false
+     */
+    public boolean isPalindrome(int num) {
+        int curr = num;
+		int result = 0;
+		while(curr > 0){
+			result = (result * 10) + (curr % 10);
+			curr /= 10;
+			System.out.println(result);
+		}
+		
+		if(num == result){
+			return true;
+		}
+		return false;
+    }
+}
