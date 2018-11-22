@@ -1,0 +1,20 @@
+public class Solution {
+    /**
+     * @param A: an array
+     * @return: the maximum value of F(0), F(1), ..., F(n-1)
+     */
+    public int maxRotateFunction(int[] A) {
+        int length = A.length;  int back = length - 1;
+        int sum = 0;    int curr = 0;
+        for(int i = 0; i < A.length; i++){
+            curr += A[i] * i;
+            sum += A[i];
+        }
+        int max = curr; //not zero in case A has negative numbers
+        while(back >= 0){   //adds one of each term, deletes (length - 1) of last term and then deletes 1 more that we added
+            curr = curr - length * A[back--] + sum;
+            max = Math.max(curr, max);
+        }
+        return max;
+    }
+}
