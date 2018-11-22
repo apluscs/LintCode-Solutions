@@ -1,0 +1,28 @@
+public class Solution {
+    /**
+     * @param s: The data stream
+     * @return: Return the judgement stream
+     */
+    public int[] getStream(String s) {
+        char[] alpha = new char[26];
+        int[] result = new int[s.length()];
+        int det = 0;    //tracks total number of letters with odd frequencies up to that point
+        for(int i = 0; i<s.length(); i++){
+            char c = s.charAt(i);
+            alpha[c - 97]++;
+            if(alpha[c - 97] % 2 == 0){   //even frequencies
+                det--;
+            }
+            else{
+                det++;
+            }
+            if(det > 1){
+                result[i] = 0;
+            }
+            else{
+                result[i] = 1;
+            }
+        }
+        return result;
+    }
+}
