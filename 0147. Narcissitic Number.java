@@ -8,7 +8,7 @@ public class Solution {
         int max = min * 10;
         List<Integer> result = new ArrayList<>();
         if(n == 1){
-            result.add(0);
+            min = 0;
         }
         for(int i = min; i < max; i++){
             if(narcissistic(i)){
