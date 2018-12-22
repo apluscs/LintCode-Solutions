@@ -1,0 +1,17 @@
+public class Solution {
+    /**
+     * @param a: the array a
+     * @return: return the index of median
+     */
+    public int getAns(int[] a) {
+        int[] nums = a.clone();
+        Arrays.sort(nums);
+        int med = nums[(nums.length - 1)/2];
+        for(int i = 0; i < a.length; i++){
+            if(a[i] == med){
+                return i;
+            }
+        }
+        return -1;
+    }
+}
