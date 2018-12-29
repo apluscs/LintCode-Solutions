@@ -29,4 +29,18 @@ public class Solution {
         }
         return head;
     }
+    
+    public ListNode reverseLessSpace(ListNode head) {
+        ListNode left= null;
+        if(head==null) return left;
+        ListNode right=head.next;
+        while(right != null){
+            head.next=left;
+            left=head;  //shifts left, head, and right down one node
+            head=right;
+            right=right.next;
+        }
+        head.next=left;
+        return head;
+    }
 }
