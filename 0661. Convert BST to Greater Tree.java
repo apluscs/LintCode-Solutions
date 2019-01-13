@@ -39,7 +39,7 @@ public class Solution {
         toVisit.push(root);
         TreeNode curr = root.right;
         while (curr != null || !toVisit.isEmpty()) {
-            while (curr != null) {
+            while (curr != null) {  //before anything, add all nodes right toVisit
                 toVisit.push(curr);
                 curr = curr.right;
             }
