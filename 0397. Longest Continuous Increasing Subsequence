@@ -29,4 +29,29 @@ public class Solution {
         max = Math.max(max, curr);
         return max;
     }
+    
+    public int longestIncreasingContinuousSubsequenceWithDP(int[] nums) {
+        if (nums.length == 0) return 0;
+        int max = 1; //length of LCS left neighbor is the max of
+        int result = 1;
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] <= nums[i - 1]) { //increasing chain is broken
+                result = Math.max(result, max);
+                max = 1;
+                continue;
+            }
+            max++;
+        }
+        result = Math.max(result, max);
+        max = 1;
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] >= nums[i - 1]) { //decreasing chain is broken
+                result = Math.max(result, max);
+                max = 1;
+                continue;
+            }
+            max++;
+        }
+        return Math.max(result, max);
+    }
 }
